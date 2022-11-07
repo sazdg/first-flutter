@@ -1,0 +1,73 @@
+{
+  "_note1": "KEEP THIS FILE! Check it into a version control system (VCS) like git.",
+  "_note2": "ObjectBox manages crucial IDs for your object model. See docs for details.",
+  "_note3": "If you have VCS merge conflicts, you must resolve them according to ObjectBox docs.",
+  "entities": [
+    {
+      "id": "1:9189384638413374228",
+      "lastPropertyId": "3:1433728107022006680",
+      "name": "Note",
+      "properties": [
+        {
+          "id": "1:7719427186602975022",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:8630601025999967581",
+          "name": "testo",
+          "type": 9
+        },
+        {
+          "id": "3:1433728107022006680",
+          "name": "dataora",
+          "type": 10
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "2:5294536476262676577",
+      "lastPropertyId": "5:2178466462609101782",
+      "name": "Utente",
+      "properties": [
+        {
+          "id": "1:2081574933478967172",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:957747519244857195",
+          "name": "nome",
+          "type": 9
+        },
+        {
+          "id": "3:8867697163768036284",
+          "name": "password",
+          "type": 9
+        },
+        {
+          "id": "5:2178466462609101782",
+          "name": "creazione",
+          "type": 10
+        }
+      ],
+      "relations": []
+    }
+  ],
+  "lastEntityId": "2:5294536476262676577",
+  "lastIndexId": "0:0",
+  "lastRelationId": "0:0",
+  "lastSequenceId": "0:0",
+  "modelVersion": 5,
+  "modelVersionParserMinimum": 5,
+  "retiredEntityUids": [],
+  "retiredIndexUids": [],
+  "retiredPropertyUids": [
+    2417182222101297833
+  ],
+  "retiredRelationUids": [],
+  "version": 1
+}
