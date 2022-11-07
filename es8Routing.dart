@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:my_flutter/es4Liste.dart';
 import 'package:my_flutter/es9Login.dart';
+import 'package:http/http.dart' as http;
 
 void main() {
   runApp(const MyApp());
@@ -75,7 +76,7 @@ class Casa extends StatelessWidget {
             MaterialButton(
               color: Colors.blue,
                 //GO TO NAMED PER PASSARE EVENTUALI PARAMETRI è COMODO
-              onPressed: () => Get.toNamed('/foo', arguments: {'foo':'noodles'}),//Get.off(() => Foo()),
+              onPressed: () => Get.toNamed('/foo', arguments: {'fraseDaPassare':'lista de cosas que hacer'}),//Get.off(() => Foo()),
               child: const Text('FOO'),
             ),
             const Spacer(),
@@ -106,6 +107,20 @@ class Foo extends StatelessWidget {
   Map argumentData = Get.arguments?? Map();
 
 
+  //leggere un file json
+  //Future<List<String>>
+  void fetchLista() async {
+    var link = Uri.parse('https://jsonplaceholder.typicode.com/todos');
+    final response = await http.get(link);
+    if (response.statusCode == 200){
+      print(response.body);
+    } else {
+      print("nothing");
+    }
+    //List<String> listaToDo = [];
+    //return listaToDo;
+  }
+
   Widget build(BuildContext context){
     //print('argomenti = $argumentData');
     return Scaffold(
@@ -116,7 +131,29 @@ class Foo extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children:  <Widget>[
-            Text('${argumentData["foo"]}'), //PER LEGGERE I DATI PASSATI COME ARGOMENTO
+            const Spacer(),
+            Text('${argumentData["fraseDaPassare"]}'), //PER LEGGERE I DATI PASSATI COME ARGOMENTO
+            const Spacer(),
+            MaterialButton(
+              color: Colors.pinkAccent,
+              onPressed: fetchLista,
+              child: const Text(
+                "Click para ver las cosas pro hacer"
+              )
+            ),
+            const Spacer(),
+            FutureBuilder<String>(
+              future: futureToDo,
+              builder: (context, snapshot){
+                if (snapshot.hasData){
+                  return Text(snapshot.data!.title);
+                } else if (snapshot.hasError){
+                  return Text('${snapshort.error}');
+                }
+                return const CircularProgressIndicator();
+              }
+            )
+            const Spacer(),
             Tooltip(
               message: 'Casa',
               child: FloatingActionButton(
@@ -125,6 +162,7 @@ class Foo extends StatelessWidget {
                   child: const Icon(Icons.home),
               ),
             ),
+            const Spacer(),
           ],
         ),
       ),
