@@ -28,7 +28,7 @@ class Login extends StatelessWidget {
 
 class PaginaLoginController extends GetxController {
   //TIENE IL CONTO SOLO DELLE VARIABILI E DELLE FUNZIONI
-
+  var prova = "prova".obs;
   var name = "".obs; //prova
   var password = "".obs;
   var autenticazione = false.obs;
